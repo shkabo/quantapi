@@ -9,19 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Event
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="date")
      */
     private $datum;
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="string", length=2)
      */
     private $countryCode;
@@ -35,11 +31,6 @@ class Event
      * @ORM\Column(type="integer")
      */
     private $ammount;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getDatum(): ?\DateTimeInterface
     {
