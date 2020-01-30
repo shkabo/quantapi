@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "nebkam/symfony-traits": "^2.0",
+        "php-amqplib/rabbitmq-bundle": "^1.14",
         "sensio/framework-extra-bundle": "^5.5",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
