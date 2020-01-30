@@ -30,7 +30,7 @@ class Event
     /**
      * @ORM\Column(type="integer")
      */
-    private $ammount;
+    private $ammount = 1;
 
     public function getDatum(): ?\DateTimeInterface
     {
