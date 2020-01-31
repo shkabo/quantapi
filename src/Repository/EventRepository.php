@@ -20,22 +20,6 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    /**
-     * @param string $countryCode
-     * @return mixed
-     * @throws NonUniqueResultException
-     */
-    public function findTodayByCountryCode(string $countryCode)
-    {
-        return $this->createQueryBuilder('q')
-            ->where('q.datum = :datum')
-            ->setParameter('datum', date("Y-m-d"))
-            ->andWhere('q.country_code = :country_code')
-            ->setParameter('country_code', $countryCode)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

@@ -3,21 +3,28 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\Table(indexes={@Index(name="search_idx", columns={"datum", "country_code"})})
  */
 class Event
 {
 
     /**
      * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $datum;
 
     /**
-     * @ORM\Id()
      * @ORM\Column(type="string", length=2)
      */
     private $countryCode;
@@ -32,14 +39,19 @@ class Event
      */
     private $ammount = 1;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getDatum(): ?\DateTimeInterface
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeInterface $datum): self
+    public function setDatum(): self
     {
-        $this->datum = $datum;
+        $this->datum = new \DateTime(date('Y-m-d'));
 
         return $this;
     }
