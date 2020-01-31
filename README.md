@@ -5,14 +5,14 @@
 * `php bin/console rabbitmq:consumer event`
 
 
-`POST` request expects JSON format
+`POST /events` request expects JSON format
 ```$xslt
 {
 	"countryCode": "RS",
 	"eventType": "click"
 }
 ```
-
+`GET /events` prima opcioni query parametar `type=json|csv`. Fallback response je `json` type
 ### Project notes/improvements
 * By default redis cache is 60 sec for the api data
 * Validation could/should be used when doing POST
