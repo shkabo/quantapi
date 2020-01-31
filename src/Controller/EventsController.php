@@ -52,6 +52,7 @@ class EventsController extends AbstractController
         $cacheKey = 'summary_'.$type;
         $item = $cache->getItem($cacheKey);
 
+        // we don't have cache ?
         if (!$item->isHit()) {
             $data = $this->getDoctrine()->getRepository(Event::class)->topFiveLastSevenDays();
             $data = $this->serializeData($data, $type);
