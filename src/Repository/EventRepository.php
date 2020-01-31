@@ -34,15 +34,15 @@ class EventRepository extends ServiceEntityRepository
         $select = $this->createQueryBuilder('e')
             ->select(['e.datum', 'e.countryCode', 'e.eventType', 'SUM(e.ammount) as CNT'])
             ->where('e.datum >= :datum')
-            ->setParameter('datum', (new \DateTime('-7 days'))->format('Y-m-d'))
             ->andWhere($expr->in('e.countryCode', ':countryCodes'))
-            ->setParameter('countryCodes', $countryCodes)
             ->groupBy('e.datum')
             ->addGroupBy('e.countryCode')
             ->addGroupBy('e.eventType')
             ->orderBy('e.datum', 'DESC')
             ->addOrderBy('e.countryCode', 'DESC')
-            ->addOrderBy('e.eventType', 'DESC');
+            ->addOrderBy('e.eventType', 'DESC')
+            ->setParameter('datum', (new \DateTime('-7 days'))->format('Y-m-d'))
+            ->setParameter('countryCodes', $countryCodes);
 
         return $select->getQuery()->getResult();
 

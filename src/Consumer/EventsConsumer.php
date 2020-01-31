@@ -24,7 +24,6 @@ class EventsConsumer implements ConsumerInterface
      */
     public function execute(AMQPMessage $msg)
     {
-        var_dump('consuming message'.PHP_EOL);
         $response = json_decode($msg->body, true);
         $this->processMessageEvent($response);
     }

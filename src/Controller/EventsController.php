@@ -60,7 +60,7 @@ class EventsController extends AbstractController
             $item->expiresAfter(new \DateInterval('PT60S'));
             $cache->save($item);
         }
-var_dump($item->isHit());
+
         switch($type) {
             case 'csv':
                 return CsvResponse::generateCsv(['Datum', 'CountryCode', 'Event', 'Amount'], $item->get());
@@ -78,7 +78,6 @@ var_dump($item->isHit());
      */
     private function serializeData($data, string $type)
     {
-        // serialize data
         /** @var Serializer $serializer */
         $serializer = $this->get('serializer');
         return $serializer->normalize($data, $type, [DateTimeNormalizer::FORMAT_KEY => 'Y-m-d']);
